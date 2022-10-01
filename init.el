@@ -35,10 +35,11 @@
 
 ;; screen
 
-(anil-package-install 'zenburn-theme)
-(load-theme 'zenburn t)    
+(anil-package-install 'doom-modeline 'doom-themes)
+(load-theme 'doom-one t)
 
 (column-number-mode)
+(doom-modeline-mode)
 (global-display-line-numbers-mode)
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
@@ -47,34 +48,34 @@
 (setq inhibit-startup-message t
       initial-scratch-message nil)
 
-(set-face-attribute 'default nil :height 200)
-
 ;; completion
 
 (anil-package-install 'company
-		      'eglot
-		      'yasnippet-snippets
-		      'which-key)
+                      'eglot
+                      'which-key)
 
 (global-company-mode)
 (icomplete-mode)
-(yas-global-mode)
 (which-key-mode)
+
+(setq js-indent-level 2)
+(setq-default indent-tabs-mode nil)
 
 (add-hook 'prog-mode-hook 'electric-pair-mode)
 (add-hook 'java-mode-hook 'eglot-ensure)
 (add-hook 'js-mode-hook 'eglot-ensure)
 
-;;; init.el ends here
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(which-key yasnippet-snippets eglot company zenburn-theme)))
+ '(package-selected-packages '(which-key eglot company doom-themes doom-modeline)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;;; init.el ends here
