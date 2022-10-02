@@ -33,10 +33,34 @@
     (unless (package-installed-p package)
       (package-install package))))
 
+;; completion
+
+(anil-package-install 'company
+                      'eglot
+                      'which-key)
+
+(add-hook 'prog-mode-hook 'electric-pair-mode)
+(add-hook 'java-mode-hook 'eglot-ensure)
+(add-hook 'js-mode-hook 'eglot-ensure)
+
+(setq js-indent-level 2)
+(setq-default indent-tabs-mode nil)
+
+(global-company-mode)
+(icomplete-mode)
+(which-key-mode)
+
+;; exwm
+
+(anil-package-install 'exwm)
+(require 'exwm)
+(require 'exwm-config)
+(exwm-config-default)
+
 ;; screen
 
-(anil-package-install 'doom-modeline 'doom-themes)
-(load-theme 'doom-one t)
+(anil-package-install 'doom-modeline
+                      'doom-themes)
 
 (column-number-mode)
 (doom-modeline-mode)
@@ -45,25 +69,10 @@
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 
+(load-theme 'doom-one t)
+
 (setq inhibit-startup-message t
       initial-scratch-message nil)
-
-;; completion
-
-(anil-package-install 'company
-                      'eglot
-                      'which-key)
-
-(global-company-mode)
-(icomplete-mode)
-(which-key-mode)
-
-(setq js-indent-level 2)
-(setq-default indent-tabs-mode nil)
-
-(add-hook 'prog-mode-hook 'electric-pair-mode)
-(add-hook 'java-mode-hook 'eglot-ensure)
-(add-hook 'js-mode-hook 'eglot-ensure)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
