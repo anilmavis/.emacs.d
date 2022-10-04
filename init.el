@@ -19,8 +19,8 @@
 
 (require 'package)
 
-(add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/") t)
+;; (add-to-list 'package-archives
+;;              '("melpa" . "https://melpa.org/packages/") t)
 
 (package-initialize)
 
@@ -33,21 +33,35 @@
     (unless (package-installed-p package)
       (package-install package))))
 
+;; screen
+
+(load-theme 'wombat)
+
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+
+(setq inhibit-startup-message t
+      initial-scratch-message nil)
+
+(add-hook 'prog-mode-hook #'global-display-line-numbers-mode)
+(column-number-mode)
+
 ;; completion
+
+(setq js-indent-level 2)
+(setq-default indent-tabs-mode nil)
 
 (anil-package-install 'company
                       'eglot
                       'which-key)
 
-(add-hook 'prog-mode-hook 'electric-pair-mode)
-(add-hook 'java-mode-hook 'eglot-ensure)
-(add-hook 'js-mode-hook 'eglot-ensure)
-
-(setq js-indent-level 2)
-(setq-default indent-tabs-mode nil)
+(add-hook 'prog-mode-hook #'electric-pair-mode)
+(add-hook 'java-mode-hook #'eglot-ensure)
+(add-hook 'js-mode-hook #'eglot-ensure)
 
 (global-company-mode)
-(icomplete-mode)
+(fido-vertical-mode)
 (which-key-mode)
 
 ;; exwm
@@ -57,24 +71,7 @@
 (require 'exwm-config)
 (exwm-config-default)
 
-;; screen
-
-(anil-package-install 'doom-modeline
-                      'doom-themes)
-
-(column-number-mode)
-(doom-modeline-mode)
-(global-display-line-numbers-mode)
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
-(tool-bar-mode -1)
-
-(load-theme 'doom-one t)
-
-(setq inhibit-startup-message t
-      initial-scratch-message nil)
-
-;; customise
+;; customisation
 
 (setq custom-file
       (expand-file-name "custom.el" user-emacs-directory))
