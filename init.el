@@ -19,8 +19,8 @@
 
 (require 'package)
 
-;; (add-to-list 'package-archives
-;;              '("melpa" . "https://melpa.org/packages/") t)
+; (add-to-list 'package-archives
+;              '("melpa" . "https://melpa.org/packages/") t)
 
 (package-initialize)
 
@@ -45,12 +45,14 @@
       initial-scratch-message nil)
 
 (add-hook 'prog-mode-hook #'global-display-line-numbers-mode)
-(column-number-mode)
+(add-hook 'prog-mode-hook #'column-number-mode)
 
 ;; completion
 
 (setq js-indent-level 2)
-(setq-default indent-tabs-mode nil)
+
+(setq-default indent-tabs-mode nil
+              tab-width 4)
 
 (anil-package-install 'company
                       'eglot
