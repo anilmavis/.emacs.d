@@ -33,18 +33,10 @@
     (unless (package-installed-p package)
       (package-install package))))
 
-;; screen
-
-(load-theme 'wombat)
-
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
-(tool-bar-mode -1)
-
 (setq inhibit-startup-message t
       initial-scratch-message nil)
 
-(add-hook 'prog-mode-hook #'global-display-line-numbers-mode)
+(add-hook 'prog-mode-hook #'display-line-numbers-mode)
 (add-hook 'prog-mode-hook #'column-number-mode)
 
 ;; completion
@@ -62,8 +54,8 @@
 (add-hook 'java-mode-hook #'eglot-ensure)
 (add-hook 'js-mode-hook #'eglot-ensure)
 
-(global-company-mode)
 (fido-vertical-mode)
+(global-company-mode)
 (which-key-mode)
 
 ;; exwm
@@ -72,6 +64,19 @@
 (require 'exwm)
 (require 'exwm-config)
 (exwm-config-default)
+
+;; registers
+
+(bookmark-set-no-overwrite
+ (expand-file-name "init.el" user-emacs-directory))
+
+;; screen
+
+(load-theme 'wombat)
+
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
 
 ;; customisation
 

@@ -49,5 +49,11 @@ flycheck_*.el
 # custom file
 custom.el
 
+# ido
+ido.last
+
 # native compilation
 eln-cache
+
+# project
+projects
