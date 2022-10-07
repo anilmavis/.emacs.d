@@ -46,6 +46,9 @@ flycheck_*.el
 # network security
 /network-security.data
 
+# bookmark
+bookmarks
+
 # custom file
 custom.el
 

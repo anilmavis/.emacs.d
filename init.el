@@ -1,4 +1,4 @@
-;;; init.el  -*- lexical-binding: t; no-byte-compile: t; -*-
+;;; init.el  -*- lexical-binding: t; -*-
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -15,75 +15,8 @@
 
 ;;; Code:
 
-;; packages
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
-(require 'package)
-
-; (add-to-list 'package-archives
-;              '("melpa" . "https://melpa.org/packages/") t)
-
-(package-initialize)
-
-(unless package-archive-contents
-  (package-refresh-contents))
-
-(defun anil-package-install (&rest packages)
-  "Install packages not installed in PACKAGES."
-  (dolist (package packages)
-    (unless (package-installed-p package)
-      (package-install package))))
-
-(setq inhibit-startup-message t
-      initial-scratch-message nil)
-
-(add-hook 'prog-mode-hook #'display-line-numbers-mode)
-(add-hook 'prog-mode-hook #'column-number-mode)
-
-;; completion
-
-(setq js-indent-level 2)
-
-(setq-default indent-tabs-mode nil
-              tab-width 4)
-
-(anil-package-install 'company
-                      'eglot
-                      'which-key)
-
-(add-hook 'prog-mode-hook #'electric-pair-mode)
-(add-hook 'java-mode-hook #'eglot-ensure)
-(add-hook 'js-mode-hook #'eglot-ensure)
-
-(fido-vertical-mode)
-(global-company-mode)
-(which-key-mode)
-
-;; exwm
-
-(anil-package-install 'exwm)
-(require 'exwm)
-(require 'exwm-config)
-(exwm-config-default)
-
-;; registers
-
-(bookmark-set-no-overwrite
- (expand-file-name "init.el" user-emacs-directory))
-
-;; screen
-
-(load-theme 'wombat)
-
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
-(tool-bar-mode -1)
-
-;; customisation
-
-(setq custom-file
-      (expand-file-name "custom.el" user-emacs-directory))
-
-(when (file-exists-p custom-file)
-  (load custom-file))
+(require 'sapphic)
 
 ;;; init.el ends here
