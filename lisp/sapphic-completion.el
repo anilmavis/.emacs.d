@@ -1,4 +1,4 @@
-;;; init.el --- Init file.  -*- lexical-binding: t; -*-
+;;; sapphic-completion.el --- Minibuffer and symbol completion.  -*- lexical-binding: t; -*-
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -17,10 +17,25 @@
 
 ;;; Code:
 
-(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(setq js-indent-level 2)
 
-(require 'sapphic)
+(setq-default indent-tabs-mode nil
+              tab-width 4)
 
-(provide 'init)
+(sapphic-package-install 'company
+                         'eglot
+                         'js2-mode
+                         'which-key)
 
-;;; init.el ends here
+(add-hook 'prog-mode-hook #'electric-pair-mode)
+(add-hook 'java-mode-hook #'eglot-ensure)
+
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+
+(fido-vertical-mode)
+(global-company-mode)
+(which-key-mode)
+
+(provide 'sapphic-completion)
+
+;;; sapphic-completion.el ends here

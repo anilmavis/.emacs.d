@@ -1,4 +1,4 @@
-;;; init.el --- Init file.  -*- lexical-binding: t; -*-
+;;; sapphic-screen.el --- The organisation of the screen.  -*- lexical-binding: t; -*-
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -17,10 +17,18 @@
 
 ;;; Code:
 
-(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(setq inhibit-startup-screen t
+      initial-scratch-message nil)
 
-(require 'sapphic)
+(add-hook 'prog-mode-hook #'display-line-numbers-mode)
+(add-hook 'prog-mode-hook #'column-number-mode)
 
-(provide 'init)
+(load-theme 'wombat)
 
-;;; init.el ends here
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+
+(provide 'sapphic-screen)
+
+;;; sapphic-screen.el ends here

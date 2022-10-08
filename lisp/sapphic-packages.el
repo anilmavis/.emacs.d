@@ -1,4 +1,4 @@
-;;; init.el --- Init file.  -*- lexical-binding: t; -*-
+;;; sapphic-packages.el --- Installing additional features.  -*- lexical-binding: t; -*-
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -17,10 +17,22 @@
 
 ;;; Code:
 
-(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(require 'package)
 
-(require 'sapphic)
+;; (add-to-list 'package-archives
+;;              '("melpa" . "https://melpa.org/packages/") t)
 
-(provide 'init)
+(package-initialize)
 
-;;; init.el ends here
+(unless package-archive-contents
+  (package-refresh-contents))
+
+(defun sapphic-package-install (&rest packages)
+  "Install packages not installed in PACKAGES."
+  (dolist (package packages)
+    (unless (package-installed-p package)
+      (package-install package))))
+
+(provide 'sapphic-packages)
+
+;;; sapphic-packages.el ends here

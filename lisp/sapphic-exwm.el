@@ -1,4 +1,4 @@
-;;; init.el --- Init file.  -*- lexical-binding: t; -*-
+;;; sapphic-exwm.el --- Emacs X Window Manager.  -*- lexical-binding: t; -*-
 
 ;; This program is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
@@ -17,10 +17,13 @@
 
 ;;; Code:
 
-(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(sapphic-package-install 'exwm)
 
-(require 'sapphic)
+(require 'exwm)
+(require 'exwm-config)
 
-(provide 'init)
+(exwm-config-default)
 
-;;; init.el ends here
+(provide 'sapphic-exwm)
+
+;;; sapphic-exwm.el ends here
