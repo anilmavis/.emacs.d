@@ -17,11 +17,22 @@
 
 ;;; Code:
 
+(defgroup sapphic nil
+  "Customisation of Sapphic Emacs."
+  :group 'convenience
+  :prefix "sapphic-")
+
+(setq custom-file
+      (expand-file-name "custom.el" user-emacs-directory))
+
+(when (file-exists-p custom-file)
+  (load custom-file))
+
 (require 'sapphic-packages)
-(require 'sapphic-customisation)
 (require 'sapphic-completion)
 ;; (require 'sapphic-exwm)
 (require 'sapphic-screen)
+(require 'sapphic-jdtls)
 
 (provide 'sapphic)
 

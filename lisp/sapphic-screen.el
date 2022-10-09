@@ -20,8 +20,8 @@
 (setq inhibit-startup-screen t
       initial-scratch-message nil)
 
-(add-hook 'prog-mode-hook #'display-line-numbers-mode)
 (add-hook 'prog-mode-hook #'column-number-mode)
+(add-hook 'prog-mode-hook #'display-line-numbers-mode)
 
 (load-theme 'wombat)
 

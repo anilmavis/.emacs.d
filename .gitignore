@@ -60,3 +60,6 @@ eln-cache
 
 # project
 projects
+
+# jdtls
+jdt-language-server-latest
