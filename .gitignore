@@ -55,11 +55,14 @@ custom.el
 # ido
 ido.last
 
+# jdtls
+jdt-language-server-latest
+
 # native compilation
 eln-cache
 
 # project
 projects
 
-# jdtls
-jdt-language-server-latest
+# url
+url
