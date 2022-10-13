@@ -24,13 +24,11 @@
 
 (sapphic-package-install 'company
                          'eglot
-                         'js2-mode
                          'which-key)
 
-(add-hook 'prog-mode-hook #'electric-pair-mode)
 (add-hook 'java-mode-hook #'eglot-ensure)
-
-(add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
+(add-hook 'js-mode-hook #'eglot-ensure)
+(add-hook 'prog-mode-hook #'electric-pair-mode)
 
 (fido-vertical-mode)
 (global-company-mode)

@@ -56,9 +56,8 @@
   (interactive)
   (let ((group-id (read-string "group id:"))
         (artifact-id (read-string "artifact id:"))
-        (archetype-artifact-id (read-string "archetype artifact id:"))
-        ())))
+        (archetype-artifact-id (read-string "archetype artifact id:"))))
 
-(provide 'sapphic-jdtls)
+  (provide 'sapphic-jdtls)
 
 ;;; sapphic-jdtls.el ends here

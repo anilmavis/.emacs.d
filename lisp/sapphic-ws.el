@@ -18,6 +18,7 @@
 ;;; Code:
 
 (defun sapphic-ws-start ()
+  (interactive)
   (let ((docroot default-directory))
     (ws-start
      (lambda (request)
@@ -26,7 +27,8 @@
            (if (ws-in-directory-p docroot path)
                (if (file-directory-p path)
                    (ws-send-directory-list process
-                                           (expand-file-name path docroot) "^[^\.]")
+                                           (expand-file-name path docroot)
+                                           "^[^\.]")
                  (ws-send-file process (expand-file-name path docroot)))
              (ws-send-404 process)))))
      9003)))

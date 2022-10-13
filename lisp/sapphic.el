@@ -31,9 +31,10 @@
 (require 'sapphic-jdtls)
 (require 'sapphic-packages)
 (require 'sapphic-completion)
-;; (require 'sapphic-exwm)
+(require 'sapphic-exwm)
 (require 'sapphic-screen)
 (require 'sapphic-ws)
+
 (provide 'sapphic)
 
 ;;; sapphic.el ends here
