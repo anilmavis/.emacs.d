@@ -33,7 +33,6 @@
 (require 'sapphic-completion)
 (require 'sapphic-exwm)
 (require 'sapphic-screen)
-(require 'sapphic-ws)
 
 (provide 'sapphic)
 
