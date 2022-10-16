@@ -28,9 +28,9 @@
 (when (file-exists-p custom-file)
   (load custom-file))
 
+(require 'sapphic-packages)
 (require 'sapphic-completion)
 (require 'sapphic-jdtls)
-(require 'sapphic-packages)
 (require 'sapphic-screen)
 (require 'sapphic-ws)
 
